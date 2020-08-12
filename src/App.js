@@ -1,23 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Question from "./components/Question";
+import Form from "./components/Form";
+import List from "./components/List";
 
 function App() {
+  const [budget, saveBudget] = useState(0);
+  const [remainingBudget, changeRemaining] = useState(0);
+  const [showQuestion, changeShowQuestion] = useState(true);
+  const [spends, saveSpends] = useState([]);
+
+  const addNewSpend = (newSpend) => {
+    saveSpends([...spends, newSpend]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header>
+        <h1>My Finance</h1>
+        <div className="contenido-principal contenido">
+          {showQuestion ? (
+            <Question
+              saveBudget={saveBudget}
+              changeShowQuestion={changeShowQuestion}
+              changeRemaining={changeRemaining}
+            />
+          ) : (
+            <div class="row">
+              <div class="one-half column">
+                <Form addNewSpend={addNewSpend} />
+              </div>
+              <div class="one-half column">
+                <List
+                  spends={spends}
+                  budget={budget}
+                  remaining={remainingBudget}
+                />
+              </div>
+            </div>
+          )}
+        </div>
       </header>
     </div>
   );
