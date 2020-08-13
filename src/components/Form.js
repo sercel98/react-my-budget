@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Error from "./Error";
 import shortid from "shortid";
+import PropTypes from "prop-types";
 
 const Form = ({ saveNewSpend, saveCreateSpend }) => {
   const [name, saveName] = useState("");
@@ -56,6 +57,11 @@ const Form = ({ saveNewSpend, saveCreateSpend }) => {
       <input type="submit" value="Add spend" className="u-full-width" />
     </form>
   );
+};
+
+Form.propTypes = {
+  saveNewSpend: PropTypes.func.isRequired,
+  saveCreateSpend: PropTypes.func.isRequired,
 };
 
 export default Form;

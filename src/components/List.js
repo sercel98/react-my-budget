@@ -1,5 +1,6 @@
 import React from "react";
 import Spend from "./Spend";
+import PropTypes from "prop-types";
 
 const List = ({ spends }) => {
   return (
@@ -7,10 +8,14 @@ const List = ({ spends }) => {
       <h2>Spends</h2>
 
       {spends.map((spend) => (
-        <Spend spend={spend} />
+        <Spend key={spend.id} spend={spend} />
       ))}
     </div>
   );
+};
+
+List.propTypes = {
+  spends: PropTypes.array.isRequired,
 };
 
 export default List;
