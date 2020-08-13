@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
+import { checkBudget } from "../Helpers";
 
 const BudgetPanel = ({ budget, remaining }) => {
   return (
     <Fragment>
       <div className="alert alert-primary">Budget: ${budget} </div>
-      <div className="alert">Remaining: ${remaining} </div>
+      <div className={checkBudget(budget, remaining)}>
+        Remaining: ${remaining}
+      </div>
     </Fragment>
   );
 };
