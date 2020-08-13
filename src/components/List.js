@@ -5,6 +5,7 @@ const List = ({ spends }) => {
   return (
     <div className="gastos-realizados">
       <h2>Spends</h2>
+
       {spends.map((spend) => (
         <Spend spend={spend} />
       ))}
